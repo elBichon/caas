@@ -20,4 +20,4 @@ jobs:
         docker build -t app .
     - name: docker push
       run: |
-        docker push app
+        docker push ${{ secrets.DOCKER_USER }}/app
