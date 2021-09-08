@@ -3,7 +3,6 @@ name: automatic deploy
 on:
   push:
     branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +16,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build app
       run: |
-        docker build -t app:$(date +%s) .
+        docker build . --file Dockerfile --tag app:$(date +%s)
     - name: docker push
       run: |
         docker push ${{ secrets.DOCKER_USER }}/test
