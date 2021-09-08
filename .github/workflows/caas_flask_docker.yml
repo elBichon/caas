@@ -17,6 +17,8 @@ jobs:
     - name: docker build app
       run: |
         docker build . --file Dockerfile --tag elbichon/caas/test:latest
+        docker tag elbichon/caas/test:latest bichondocker/test:latest
     - name: docker push
       run: |
         docker push bichondocker/test:latest
+        
