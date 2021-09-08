@@ -16,7 +16,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build app
       run: |
-        docker build . --file Dockerfile --tag test:$(date +%s)
+        docker build . --file Dockerfile --tag elBichon/test:$(date +%s)
     - name: docker push
       run: |
         docker push ${{ secrets.DOCKER_USER }}/test:$(date +%s)
