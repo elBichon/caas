@@ -1,6 +1,6 @@
-FROM python:3.8-slim-buster
+FROM python:3.7-slim
 WORKDIR /app
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-COPY . .
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+ADD . /app
+RUN apt-get update && apt-get install -y libgomp1
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+CMD ["/app/app.py"]
