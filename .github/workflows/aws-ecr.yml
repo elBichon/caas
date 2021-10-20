@@ -31,7 +31,7 @@ jobs:
       id: create-ecr-repo
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: ${{ secrets.MY_APP }}
+        ECR_REPOSITORY: ${{ secrets.REPOSITORY }}
       run: aws ecr create-repository --repository-name $ECR_REPOSITORY
 
     - name: Build, tag, and push image to Amazon ECR
