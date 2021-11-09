@@ -20,7 +20,6 @@ jobs:
     - name: docker build app
       run: |
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_REPOSITORY }}/test:latest
-        docker tag elbichon/caas/test:latest ${{ secrets.DOCKER_USER }}/test:latest
     - name: docker push
       run: |
         docker push ${{ secrets.DOCKER_USER }}/test:latest
