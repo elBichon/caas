@@ -15,11 +15,12 @@ jobs:
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+        DOCKER_REPOSITORY: ${{ secrets.DOCKER_REPOSITORY }}  
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build app
       run: |
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/test:latest
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_USER }}:latest
     - name: docker push
       run: |
-        docker push bichondocker/test:latest
+        docker push ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_USER }}:latest
