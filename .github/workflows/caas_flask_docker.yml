@@ -16,7 +16,7 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build app
       run: |
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_REPOSITORY }}/test:latest
